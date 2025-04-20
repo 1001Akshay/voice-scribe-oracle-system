@@ -99,3 +99,87 @@
     @apply bg-background text-foreground;
   }
 }
+
+@layer components {
+  .voice-assistant-bg {
+    @apply bg-gradient-to-br from-assistant-light via-assistant-secondary to-assistant-dark;
+  }
+  
+  .voice-pulse {
+    animation: voice-pulse 1.5s infinite;
+  }
+  
+  .assistant-card {
+    @apply bg-white/90 backdrop-blur-md rounded-2xl shadow-lg border border-assistant-light/20;
+  }
+  
+  .assistant-input {
+    @apply bg-white/50 backdrop-blur-sm border border-assistant-light/30 rounded-full px-4 py-3 focus:outline-none focus:ring-2 focus:ring-assistant-primary/50 transition-all;
+  }
+  
+  .assistant-button {
+    @apply bg-assistant-primary hover:bg-assistant-dark text-white rounded-full transition-all;
+  }
+
+  .assistant-icon-button {
+    @apply bg-assistant-primary/10 hover:bg-assistant-primary/20 text-assistant-primary p-3 rounded-full transition-all;
+  }
+  
+  .wave-animation {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .wave-animation::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, transparent, #818CF8, transparent);
+    animation: wave 2s infinite;
+  }
+}
+
+@keyframes voice-pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes wave {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: .5;
+    transform: scale(1.1);
+  }
+}
+
+@keyframes ping {
+  75%, 100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}

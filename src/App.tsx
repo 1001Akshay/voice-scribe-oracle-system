@@ -8,6 +8,11 @@ import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
 
+// Polyfill for older browsers if needed
+if (!('SpeechRecognition' in window) && 'webkitSpeechRecognition' in window) {
+  (window as any).SpeechRecognition = (window as any).webkitSpeechRecognition;
+}
+
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
